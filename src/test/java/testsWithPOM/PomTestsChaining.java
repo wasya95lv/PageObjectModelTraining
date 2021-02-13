@@ -30,4 +30,16 @@ public class PomTestsChaining extends BaseWebDriver {
 
     Assert.assertTrue(driver.getTitle().contains("TestNG - Welcome"));
   }
+
+  @Test
+  public void test3() {
+    driver.get("https://www.google.com");
+    GoogleSearchPage googleSearchPage = new GoogleSearchPage(driver);
+    googleSearchPage.sendSearchQuery("TestNG");
+
+    ResultsPage resultsPage = new ResultsPage(driver);
+    resultsPage.getResultByText("TestNG - Welcome").click();
+
+    Assert.assertTrue(driver.getTitle().contains("TestNG - Welcome"));
+  }
 }
